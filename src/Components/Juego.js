@@ -1,4 +1,4 @@
-function Todo(props){
+function Juego(props){
     let handleSubmit = (e) => {
         e.preventDefault();
         console.log(e.target.respuesta.value);
@@ -17,4 +17,4 @@ function Todo(props){
     )
 }
 
-export default Todo;
+export default Juego;
