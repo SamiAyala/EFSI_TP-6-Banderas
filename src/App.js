@@ -34,7 +34,13 @@ function App() {
         setarrayPaises(array);
         let arrayAux = new Array(array[id].name.length);
         for (let i = 0; i < array[id].name.length; i++) {
-          arrayAux[i]=' _ '
+          if (array[id].name[i] === ' ') {
+            arrayAux[i] = ' '
+          }
+          else{
+            arrayAux[i] = ' _ '  
+          }
+          
         }
         setStringAyuda(arrayAux);
       });
@@ -71,7 +77,7 @@ function App() {
         {console.log(pais.name)}
         <h1>Puntos: {puntos}</h1>
         {<h2>Tiempo: {timer} </h2>}
-        <h2>aca : {stringAyuda.join(' ').toString()}</h2>
+        <h2>aca : {stringAyuda.map(char => <span className={ char  === " " ? 'espacio' : 'letra' }>{char}</span>)}</h2>
         <Ayuda timer = {timer} setTimer = {setTimer} setLetrasUsadas = {setLetrasUsadas} letrasUsadas = {letrasUsadas} stringAyuda = {stringAyuda} setStringAyuda = {setStringAyuda} arrayLetras = {arrayLetras}></Ayuda>
         <Juego setRespuesta={setRespuesta} flag={pais.flag} cambiarPais={cambiarPais}></Juego>
       </header>
