@@ -18,7 +18,7 @@ function App() {
 
 
   useEffect(()=>{
-    if(timer === 0){
+    if(timer === 0 || timer < 0){
       cambiarPais();
     }
   },[timer])
@@ -77,7 +77,8 @@ function App() {
         {console.log(pais.name)}
         <h1>Puntos: {puntos}</h1>
         {<h2>Tiempo: {timer} </h2>}
-        <h2>aca : {stringAyuda.map(char => <span className={ char  === " " ? 'espacio' : 'letra' }>{char}</span>)}</h2>
+        <h2>Pista : {stringAyuda.map(char => <span className={ char  === " " ? 'espacio' : 'letra' }>{char}</span>)}</h2>
+        <h2>Cantidad de letras : {stringAyuda.length}</h2>
         <Ayuda timer = {timer} setTimer = {setTimer} setLetrasUsadas = {setLetrasUsadas} letrasUsadas = {letrasUsadas} stringAyuda = {stringAyuda} setStringAyuda = {setStringAyuda} arrayLetras = {arrayLetras}></Ayuda>
         <Juego setRespuesta={setRespuesta} flag={pais.flag} cambiarPais={cambiarPais}></Juego>
       </header>

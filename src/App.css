@@ -14,14 +14,16 @@
 }
 
 .App-header {
-  background-color: #e0129b;
+  background-image: url('https://campus.ort.edu.ar/static/archivos/usuarioperfil/73323');
   min-height: 100vh;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
   font-size: calc(10px + 2vmin);
-  color: white;
+  -webkit-text-stroke: 0.5px black;
+  font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+  color: rgb(255, 238, 0);
 }
 
 .App-link {

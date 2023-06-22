@@ -1,3 +1,5 @@
+import './Juego.css' 
+
 function Juego(props){
     let handleSubmit = (e) => {
         e.preventDefault();
@@ -6,7 +8,7 @@ function Juego(props){
     }
     return(
         <div>
-            <img src={props.flag} alt=""></img>
+            <img className='Img' src={props.flag} alt="" ></img>
         <form onSubmit={(e) => handleSubmit(e)}>
             <label>Ingrese su respuesta:</label>
             <input type="text" name="respuesta" />
