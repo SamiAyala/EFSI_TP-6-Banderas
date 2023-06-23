@@ -5,6 +5,7 @@ import axios from 'axios';
 import Juego from './Components/Juego';
 import Ayuda from './Components/Ayuda';
 
+
 function App() {
   const [respuesta, setRespuesta] = useState('');
   const [arrayPaises, setarrayPaises] = useState([]);
@@ -30,7 +31,7 @@ function App() {
         const array = response.data.data;
         let id = Math.floor(Math.random() * (array.length + 1));
         setPais(array[id]);
-        setArrayLetras(array[id].name)
+        setArrayLetras(array[id].name.split())
         setarrayPaises(array);
         let arrayAux = new Array(array[id].name.length);
         for (let i = 0; i < array[id].name.length; i++) {
@@ -47,12 +48,10 @@ function App() {
   }, []);
   useEffect(()=>{
     if (respuesta === pais.name) {
-      console.log("correcto")
       setPuntos(puntos + 10 + timer);
       cambiarPais();
 
     } else {
-      console.log("incorrecto")
       if (puntos > 0) setPuntos(puntos - 1);
     }
   },[respuesta]);
@@ -64,7 +63,7 @@ function App() {
     setReferencia(setInterval(()=> {setTimer( t => t - 1)},1000));
   let id = Math.floor(Math.random() * (arrayPaises.length + 1));
   setPais(arrayPaises[id]);
-  setArrayLetras(arrayPaises[id].name);
+  setArrayLetras(arrayPaises[id].name.split());
   let arrayAux = new Array(arrayPaises[id].name.length);
         for (let i = 0; i < arrayPaises[id].name.length; i++) {
           arrayAux[i]=' _ ';
@@ -74,7 +73,6 @@ function App() {
   return (
     <div className="App">
       <header className="App-header">
-        {console.log(pais.name)}
         <h1>Puntos: {puntos}</h1>
         {<h2>Tiempo: {timer} </h2>}
         <h2>Pista : {stringAyuda.map(char => <span className={ char  === " " ? 'espacio' : 'letra' }>{char}</span>)}</h2>

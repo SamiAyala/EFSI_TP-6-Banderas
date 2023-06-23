@@ -1,9 +1,9 @@
 import './Juego.css' 
+import {string , func} from 'prop-types';
 
 function Juego(props){
     let handleSubmit = (e) => {
         e.preventDefault();
-        console.log(e.target.respuesta.value);
         props.setRespuesta(e.target.respuesta.value);
     }
     return(
@@ -17,6 +17,11 @@ function Juego(props){
             <button onClick={props.cambiarPais}>Skip</button>
         </div>
     )
+}
+Juego.propTypes = {
+    setRespuesta: func,
+    flag: string,
+    cambiarPais: func
 }
 
 export default Juego;

@@ -1,11 +1,10 @@
+import {number , string , func , arrayOf} from 'prop-types';
+
 function Ayuda(props){
 
     let mostrarLetra = () => {
         let id = Math.floor(Math.random() * (props.arrayLetras.length));
         let arrayAyuda = props.stringAyuda;
-        console.log("id: ",id)
-        console.log("letrasUsadas entero: ", props.letrasUsadas);
-        console.log("props.arrayLetras: ",props.arrayLetras)
 
         for (let i = 0; i < props.letrasUsadas.length; i++) {
             if(props.letrasUsadas[i]===id)
@@ -14,7 +13,6 @@ function Ayuda(props){
             }
         }
         for (let i = 0; i < props.arrayLetras.length; i++) {
-            console.log("for id: ",id)
           if(i===id){
             props.setLetrasUsadas([...props.letrasUsadas, i]);
             arrayAyuda[i] = props.arrayLetras[i];
@@ -36,6 +34,16 @@ function Ayuda(props){
     return(
         <button onClick={mostrarLetra}>Mostrar Ayuda</button>
     )
+}
+
+Ayuda.propTypes = {
+  timer: number,
+  setTimer: func,
+  setLetrasUsadas: func,
+  letrasUsadas: arrayOf(number),
+  stringAyuda: arrayOf(string), 
+  setStringAyuda: func,
+  arrayLetras: arrayOf(string)
 }
 
 export default Ayuda;
