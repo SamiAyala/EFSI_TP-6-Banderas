@@ -3,23 +3,23 @@ import {number , string , func , arrayOf} from 'prop-types';
 function Ayuda(props){
 
     let mostrarLetra = () => {
-        let id = Math.floor(Math.random() * (props.arrayLetras.length));
-        let arrayAyuda = props.stringAyuda;
+        let id = Math.floor(Math.random() * (props.stringLetras.length));
+        let arrayAyuda = props.arrayAyuda;
 
-        for (let i = 0; i < props.letrasUsadas.length; i++) {
-            if(props.letrasUsadas[i]===id)
+        for (let i = 0; i < props.arrayLetrasUsadas.length; i++) {
+            if(props.arrayLetrasUsadas[i]===id)
             {
-                id = Math.floor(Math.random() * (props.arrayLetras.length));
+                id = Math.floor(Math.random() * (props.stringLetras.length));
             }
         }
-        for (let i = 0; i < props.arrayLetras.length; i++) {
+        for (let i = 0; i < props.stringLetras.length; i++) {
           if(i===id){
-            props.setLetrasUsadas([...props.letrasUsadas, i]);
-            arrayAyuda[i] = props.arrayLetras[i];
+            props.setarrayLetrasUsadas([...props.arrayLetrasUsadas, i]);
+            arrayAyuda[i] = props.stringLetras[i];
           }
           else{
-            if(arrayAyuda[i]!==props.stringAyuda[i]){
-                if(props.stringAyuda[i] === ' ')
+            if(arrayAyuda[i]!==props.arrayAyuda[i]){
+                if(props.arrayAyuda[i] === ' ')
                 {
                     arrayAyuda[i]= ' ';
                 }
@@ -27,7 +27,7 @@ function Ayuda(props){
             }
           }
         }
-        props.setStringAyuda(arrayAyuda);
+        props.setarrayAyuda(arrayAyuda);
         props.setTimer(t => t-2)
 
       }
@@ -39,11 +39,11 @@ function Ayuda(props){
 Ayuda.propTypes = {
   timer: number,
   setTimer: func,
-  setLetrasUsadas: func,
-  letrasUsadas: arrayOf(number),
-  stringAyuda: arrayOf(string), 
-  setStringAyuda: func,
-  arrayLetras: arrayOf(string)
+  setarrayLetrasUsadas: func,
+  arrayLetrasUsadas: arrayOf(number),
+  arrayAyuda: arrayOf(string), 
+  setarrayAyuda: func,
+  stringLetras: string
 }
 
 export default Ayuda;
